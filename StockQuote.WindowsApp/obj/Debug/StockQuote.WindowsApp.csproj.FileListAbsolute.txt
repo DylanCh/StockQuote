@@ -1,0 +1,16 @@
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\MainWindow.g.cs
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\App.g.cs
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp_MarkupCompile.cache
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp_MarkupCompile.lref
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\bin\Debug\StockQuote.WindowsApp.exe.config
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\bin\Debug\StockQuote.WindowsApp.exe
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\bin\Debug\StockQuote.WindowsApp.pdb
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.csprojResolveAssemblyReference.cache
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\MainWindow.baml
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.g.resources
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.Properties.Resources.resources
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.csproj.GenerateResource.Cache
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.exe
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\obj\Debug\StockQuote.WindowsApp.pdb
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dylan\Source\Workspaces\Workspace\StockQuote\StockQuote.WindowsApp\bin\Debug\Newtonsoft.Json.xml

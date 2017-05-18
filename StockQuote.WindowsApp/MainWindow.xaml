@@ -1,0 +1,83 @@
+﻿<Window x:Class="StockQuote.WindowsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StockQuote.WindowsApp"
+        mc:Ignorable="d"
+        Title="StockQuote" Height="495.35" Width="616">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Height="277" Margin="24,20,0,0" VerticalAlignment="Top" Width="108">
+            <StackPanel Height="100">
+                <GroupBox x:Name="groupBox" Margin="0,0,-36,0" Height="82" >
+                    <GroupBox.Header>
+                        Select Your Market
+                    </GroupBox.Header>
+
+                    <RadioButton x:Name="Sp500" GroupName="markets" Content="S&amp;P 500" IsChecked="True" />
+
+                </GroupBox>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="211" Margin="216,20,0,0" VerticalAlignment="Top" Width="234">
+            <Label x:Name="label" Content="Symbol (e.g. MSFT)"/>
+            <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="" TextChanged="textBox_TextChanged">
+                <TextBox.Style>
+                    <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Query (e.g. MSFT)" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label x:Name="label2">
+                <Label x:Name="label3" Content="From:"/>
+            </Label>
+            <DatePicker x:Name="fromDate" SelectedDate="{Binding from_date}" SelectedDateChanged="fromDate_SelectedDateChanged" />
+            <Label x:Name="label5" Content="To:"/>
+            <DatePicker x:Name="toDate" SelectedDate="{Binding to_date}" SelectedDateChanged="toDate_SelectedDateChanged" />
+            <CheckBox x:Name="isWeekly" Content="Weekly Data"/>
+            <Button x:Name="button" Click="button_Click">
+                <Label x:Name="label1" Content="Search"/>
+            </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="213" Margin="44,231,0,0" VerticalAlignment="Top" Width="538">
+            <Label x:Name="label4">
+                <Label x:Name="label6" Content="" Visibility="Hidden"/>
+            </Label>
+            <ListView x:Name="listView" Height="100" Visibility="Collapsed" ItemsSource="{Binding DATA_SERVICE}">
+                <!--<ListView.View>-->
+                    <!--<GridView x:Name="gridView1" >
+                        <GridViewColumn Header="Date " Width="auto" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Open " Width="auto" DisplayMemberBinding="{Binding Open}"/>
+                        <GridViewColumn Header="High " Width="auto" DisplayMemberBinding="{Binding High}"/>
+                        <GridViewColumn Header="Low " Width="auto" DisplayMemberBinding="{Binding Low}"/>
+                        <GridViewColumn Header="Close " Width="auto" DisplayMemberBinding="{Binding Close}"/>
+                        <GridViewColumn Header="Volume " Width="auto" DisplayMemberBinding="{Binding Volume}"/>
+                        <GridViewColumn Header="Adjusted Closing" Width="auto" DisplayMemberBinding="{Binding Adj_Close}"/>
+                    </GridView>
+                </ListView.View>-->
+                <!--<ListBox x:Name="listBox" Height="100" Width="100"/>-->
+                <DataGrid x:Name="dataGrid" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" ItemsSource="{Binding DATA_SERVICE}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date " Width="auto" Binding="{Binding Path=Date}" />
+                        <DataGridTextColumn Header="Open " Width="auto" Binding="{Binding Path=Open}" />
+                        <DataGridTextColumn Header="High " Width="auto" Binding="{Binding Path=High}" />
+                        <DataGridTextColumn Header="Low " Width="auto" Binding="{Binding Path=Low}" />
+                        <DataGridTextColumn Header="Close " Width="auto" Binding="{Binding Path=Close}" />
+                        <DataGridTextColumn Header="Volumn " Width="auto" Binding="{Binding Path=Volume}" />
+                        <DataGridTextColumn Header="Adjusted Closing" Width="auto" Binding="{Binding Path=Adj_Close}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ListView>
+            <Button x:Name="button1" Content="View Chart" Visibility="Collapsed" Click="button1_Click"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
