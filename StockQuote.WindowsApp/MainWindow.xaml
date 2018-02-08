@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="StockQuote" Height="495.35" Width="616">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="408*"/>
+            <ColumnDefinition Width="117*"/>
+            <ColumnDefinition Width="83*"/>
+        </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" Height="277" Margin="24,20,0,0" VerticalAlignment="Top" Width="108">
             <StackPanel Height="100">
                 <GroupBox x:Name="groupBox" Margin="0,0,-36,0" Height="82" >
@@ -20,7 +25,7 @@
             </StackPanel>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="211" Margin="216,20,0,0" VerticalAlignment="Top" Width="234">
+        <StackPanel HorizontalAlignment="Left" Height="211" Margin="216,20,0,0" VerticalAlignment="Top" Width="234" Grid.ColumnSpan="2">
             <Label x:Name="label" Content="Symbol (e.g. MSFT)"/>
             <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="" TextChanged="textBox_TextChanged">
                 <TextBox.Style>
@@ -46,13 +51,13 @@
                 <Label x:Name="label1" Content="Search"/>
             </Button>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="213" Margin="44,231,0,0" VerticalAlignment="Top" Width="538">
+        <StackPanel HorizontalAlignment="Left" Height="213" Margin="44,231,0,0" VerticalAlignment="Top" Width="538" Grid.ColumnSpan="3">
             <Label x:Name="label4">
                 <Label x:Name="label6" Content="" Visibility="Hidden"/>
             </Label>
             <ListView x:Name="listView" Height="100" Visibility="Collapsed" ItemsSource="{Binding DATA_SERVICE}">
                 <!--<ListView.View>-->
-                    <!--<GridView x:Name="gridView1" >
+                <!--<GridView x:Name="gridView1" >
                         <GridViewColumn Header="Date " Width="auto" DisplayMemberBinding="{Binding Date}"/>
                         <GridViewColumn Header="Open " Width="auto" DisplayMemberBinding="{Binding Open}"/>
                         <GridViewColumn Header="High " Width="auto" DisplayMemberBinding="{Binding High}"/>
@@ -77,6 +82,15 @@
             </ListView>
             <Button x:Name="button1" Content="View Chart" Visibility="Collapsed" Click="button1_Click"/>
         </StackPanel>
+        <DockPanel HorizontalAlignment="Left" Height="15" LastChildFill="False" VerticalAlignment="Top" Width="598" Grid.ColumnSpan="3">
+            <Menu DockPanel.Dock="Top" Height="15">
+                <MenuItem Header="File">
+                    <MenuItem Header="Close" Click="MenuItem_Click">
+
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
 
 
     </Grid>

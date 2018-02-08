@@ -23,7 +23,7 @@ namespace StockQuote.WindowsApp
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -51,7 +51,8 @@ namespace StockQuote.WindowsApp
                 // Download all S&amp;P500 stocks
                 MessageBox.Show("Please enter symbol");
             }
-            else if (from_date==null || to_date==null) {
+            else if (from_date == null || to_date == null)
+            {
                 MessageBox.Show("Please select From date and To date");
             }
             else
@@ -61,26 +62,27 @@ namespace StockQuote.WindowsApp
                 tDate = (DateTime)to_date;
                 // Read user input and download those stocks
                 urlParamBuilder.Append("&a=");
-                urlParamBuilder.Append(fDate.Month-1);
+                urlParamBuilder.Append(fDate.Month - 1);
                 urlParamBuilder.Append("&b=");
                 urlParamBuilder.Append(fDate.Day);
                 urlParamBuilder.Append("&c=");
                 urlParamBuilder.Append(fDate.Year);
                 urlParamBuilder.Append("&d=");
-                urlParamBuilder.Append(tDate.Month-1);
+                urlParamBuilder.Append(tDate.Month - 1);
                 urlParamBuilder.Append("&e=");
                 urlParamBuilder.Append(tDate.Day);
                 urlParamBuilder.Append("&f=");
                 urlParamBuilder.Append(tDate.Year);
 
-                if (isWeekly.IsChecked != null && isWeekly.IsChecked.Value) {
+                if (isWeekly.IsChecked != null && isWeekly.IsChecked.Value)
+                {
                     urlParamBuilder.Append("&g=w");
                 }
-                
-            
+
+
                 String urlParam = urlParamBuilder.ToString();
 
-                
+
                 using (WebClient client = new WebClient())
                 {
                     try
@@ -90,14 +92,15 @@ namespace StockQuote.WindowsApp
                         , userStocks + ".csv");
 
                         // get data
-                        client.DownloadFile(ROOT_URL + urlParam + "&ignore=.csv", 
-                            userStocks+"+"+ fDate.ToString("yyyyMMdd") +"+"+tDate.ToString("yyyyMMdd") +".csv"
+                        client.DownloadFile(ROOT_URL + urlParam + "&ignore=.csv",
+                            userStocks + "+" + fDate.ToString("yyyyMMdd") + "+" + tDate.ToString("yyyyMMdd") + ".csv"
                         );
                     }
-                    catch (Exception ex) {
-                        MessageBox.Show(ex.Message,"Cannot retrieve data");
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Cannot retrieve data");
                     }
-                 }
+                }
 
                 // get the bin folder
                 String getBinFolder = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -134,14 +137,15 @@ namespace StockQuote.WindowsApp
                     }
                 }
 
-                else {
+                else
+                {
                     MessageBox.Show("Cannot save retrieved data to disk");
                 }
 
 
             }
-            
-            
+
+
         }
 
         //private GridView createGridView()
@@ -160,18 +164,28 @@ namespace StockQuote.WindowsApp
         //    return grid;
         //}
 
-        private List<Model.StockSearch> readCSV(String filePath) {
+        private List<Model.StockSearch> readCSV(String filePath)
+        {
             StringBuilder reading = new StringBuilder();
-            using (var reader = new StreamReader(File.OpenRead(filePath)))
+
+            try
             {
-                
-                while (!reader.EndOfStream)
+
+                using (var reader = new StreamReader(File.OpenRead(filePath)))
                 {
-                    reading.Append(reader.ReadLine());
-                    reading.Append("X");
+                    while (!reader.EndOfStream)
+                    {
+                        reading.Append(reader.ReadLine());
+                        reading.Append("X");
+                    }
                 }
             }
-            return getDataList(reading.ToString(), filePath.Substring(0,4));
+            catch (System.IO.FileNotFoundException e)
+            {
+                MessageBox.Show("File Not Found", "Error Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return getDataList(reading.ToString(), filePath.Substring(0, 4));
         } // end read csv
         // TODO: finish method with real data parameters
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -204,16 +218,22 @@ namespace StockQuote.WindowsApp
                     }
                 }// end filestream
 
-            
+
                 var file = Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), fileName);
                 //Process.Start(file);
                 WebBrowser wb = new WebBrowser();
-                
-               
+
+
             }
-            catch (NotSupportedException nsE) {
+            catch (NotSupportedException nsE)
+            {
                 MessageBox.Show("Sorry cannot show chart.");
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private List<Model.StockSearch> getDataList(string v, String symbol)
@@ -227,7 +247,8 @@ namespace StockQuote.WindowsApp
                 foreach (String s in listEntry)
                 {
                     //String[] ss = LineSplitter(s).ToArray();
-                    if (s!=null && s!=String.Empty) {
+                    if (s != null && s != String.Empty)
+                    {
                         String[] ss = s.Split(',');
                         list.Add(
                             new Model.StockSearch(
@@ -244,7 +265,8 @@ namespace StockQuote.WindowsApp
                     }
                 } // end foreach
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Something is wrong");
             }
             return list;
